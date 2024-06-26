@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ArtGalleryFinalsProject" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DOOBSCOMP\SQLEXPRESS;Initial Catalog=ArtGalleryFinalsProject;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="IntegProgFinals_ArtGallery_ArtView.Properties.Settings" SettingsPropertyName="ArtGalleryFinalsProjectConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AccountRole" Member="AccountRoles">
+    <Type Name="AccountRole">
+      <Column Name="AccountRole_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AccountRole_Desc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="AccountRole_RegisteredUser" Member="RegisteredUsers" ThisKey="AccountRole_ID" OtherKey="AccountRole_ID" Type="RegisteredUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ArtStatus" Member="ArtStatus">
+    <Type Name="ArtStatus">
+      <Column Name="ArtStatus_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ArtStatus_Desc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="ArtStatus_Art" Member="Arts" ThisKey="ArtStatus_ID" OtherKey="ArtStatus_ID" Type="Art" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Exhibition" Member="Exhibitions">
+    <Type Name="Exhibition">
+      <Column Name="Exhibition_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Exhibition_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Exhibition_Desc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Exhibition_Art" Member="Arts" ThisKey="Exhibition_ID" OtherKey="Exhibition_ID" Type="Art" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserStatus" Member="UserStatus">
+    <Type Name="UserStatus">
+      <Column Name="UserStatus_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserStatus_Desc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="UserStatus_RegisteredUser" Member="RegisteredUsers" ThisKey="UserStatus_ID" OtherKey="UserStatus_ID" Type="RegisteredUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Art" Member="Arts">
+    <Type Name="Art">
+      <Column Name="Art_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="U_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ArtStatus_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Art_Desc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Art_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Art_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Art_FilePath" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Exhibition_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Art_Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="ArtStatus_Art" Member="ArtStatus" ThisKey="ArtStatus_ID" OtherKey="ArtStatus_ID" Type="ArtStatus" IsForeignKey="true" />
+      <Association Name="Exhibition_Art" Member="Exhibition" ThisKey="Exhibition_ID" OtherKey="Exhibition_ID" Type="Exhibition" IsForeignKey="true" />
+      <Association Name="RegisteredUser_Art" Member="RegisteredUser" ThisKey="U_ID" OtherKey="U_ID" Type="RegisteredUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RegisteredUsers" Member="RegisteredUsers">
+    <Type Name="RegisteredUser">
+      <Column Name="U_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="User_DisplayName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="User_Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="User_Sex" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="User_Bio" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="UserStatus_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="User_pfpFilePath" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="AccountRole_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="User_Username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="User_Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="RegisteredUser_Art" Member="Arts" ThisKey="U_ID" OtherKey="U_ID" Type="Art" />
+      <Association Name="AccountRole_RegisteredUser" Member="AccountRole" ThisKey="AccountRole_ID" OtherKey="AccountRole_ID" Type="AccountRole" IsForeignKey="true" />
+      <Association Name="UserStatus_RegisteredUser" Member="UserStatus" ThisKey="UserStatus_ID" OtherKey="UserStatus_ID" Type="UserStatus" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
