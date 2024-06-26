@@ -134,17 +134,29 @@
 
         <ComboBox x:Name="ExhibitionComboBx" HorizontalAlignment="Left" Margin="37,134,0,0" VerticalAlignment="Top" VerticalContentAlignment="Top" Width="342" Height="36" FontSize="22" SelectionChanged="ExhibitionComboBx_SelectionChanged"/>
         <Label Content="Exhibition" HorizontalAlignment="Left" Margin="37,98,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="396" Height="36" FontSize="22"/>
-        <Button x:Name="ExhibitionDescBtn" Content="Button" HorizontalAlignment="Left" Margin="393,134,0,0" VerticalAlignment="Top" Height="36" Click="ExhibitionDescBtn_Click"/>
+        <Button x:Name="ExhibitionDescBtn" Content="?" HorizontalAlignment="Left" Margin="393,134,0,0" VerticalAlignment="Top" Height="36" Click="ExhibitionDescBtn_Click" Width="40" FontSize="23" FontWeight="Bold">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="32"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
         <CheckBox x:Name="ShowArtForSaleCheckBox" Content="Show Only Art For Sale" HorizontalAlignment="Left" Margin="37,185,0,0" VerticalAlignment="Top" Width="396" Height="36" FontSize="22" IsChecked="False" Checked="ShowArtForSaleCheckBox_Checked" Unchecked="ShowArtForSaleCheckBox_Unchecked"/>
 
-        <Image HorizontalAlignment="Left" Height="303" Width="424" Margin="500,92,0,0" VerticalAlignment="Top"  OpacityMask="Black"/>
+        <Image x:Name="ArtImg" HorizontalAlignment="Left" Height="303" Width="424" Margin="462,58,0,0" VerticalAlignment="Top"  OpacityMask="Black"/>
         <Rectangle HorizontalAlignment="Left" Height="303" Width="424" Margin="462,58,0,0" Stroke="Black" VerticalAlignment="Top"/>
 
         <Label x:Name="ArtTitleLbl" Content="Art Name" HorizontalAlignment="Left" Margin="476,15,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="396" Height="43" FontSize="25"/>
 
         <Label x:Name="ArtistLbl" Content="Artist:" HorizontalAlignment="Left" Margin="507,366,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="386" Height="38" FontSize="22"/>
-        <Button x:Name="ArtistBioBtn" Content="Button" HorizontalAlignment="Left" Margin="462,368,0,0" VerticalAlignment="Top" Height="36" Click="ArtistBioBtn_Click"/>
+        <Button x:Name="ArtistBioBtn" Content="?" HorizontalAlignment="Left" Margin="462,368,0,0" VerticalAlignment="Top" Height="36" Click="ArtistBioBtn_Click" Width="38" FontSize="23" FontWeight="Bold">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="32"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
         <TextBlock x:Name="ArtDescTxtBlck" Text="Description:" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="462,409,0,0" VerticalAlignment="Top" Width="424" Height="123" FontSize="22"/>
 

@@ -144,12 +144,16 @@ namespace IntegProgFinals_ArtGallery_ArtView
                 var astbl = from s in _dbConn.GetTable<ArtStatus>()
                             select s;
 
+                string[] date = new string[] { };
+
                 foreach (var art in arttbl)
                 {
                     foreach (var user in userstbl)
                     {
                         if (art.Art_Title == item[0].ToString() && art.U_ID == user.U_ID)
                         {
+                            BitmapImage bmi = new BitmapImage();
+
                             ArtTitleLbl.Content = art.Art_Title;
                             ArtistLbl.Content = "Artist: " + user.User_DisplayName;
                             ArtDescTxtBlck.Text = "Description: " + art.Art_Desc;
@@ -167,8 +171,22 @@ namespace IntegProgFinals_ArtGallery_ArtView
                                     ArtStatusLbl.Content = "Status: " + ast.ArtStatus_Desc;
                                 }
                             }
-                            ArtDateLbl.Content = "Date: " + art.Art_Date;
+                            date = art.Art_Date.ToString().Split(' ');
+                            ArtDateLbl.Content = "Date: " + date[0];
                             ArtPriceLbl.Content = "Price: " + art.Art_Price;
+                            if(art.Art_FilePath == null || art.Art_FilePath == "")
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                bmi.BeginInit();
+                                bmi.UriSource = new Uri(art.Art_FilePath);
+                                bmi.EndInit();
+
+                                ArtImg.Source = bmi;
+                            }
+
                         }
                     }
                 }
