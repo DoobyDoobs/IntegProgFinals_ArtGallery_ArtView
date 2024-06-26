@@ -49,6 +49,12 @@ namespace IntegProgFinals_ArtGallery_ArtView
             {
                 foreach (var user in userstbl)
                 {
+                    //if banned user
+                    if (user.UserStatus_ID == "US2")
+                    {
+                        break;
+                    }
+                    //
                     if (art.U_ID == user.U_ID)
                     {
                         ArtListBox.Items.Add(art.Art_Title + "|" + user.User_DisplayName);
@@ -110,6 +116,12 @@ namespace IntegProgFinals_ArtGallery_ArtView
             var userstbl = from s in _dbConn.GetTable<RegisteredUser>()
                            select s;
 
+            var usttbl = from s in _dbConn.GetTable<UserStatus>()
+                         select s;
+
+            string[] date = new string[] { };
+            string status = "";
+
             if (ArtListBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Click on this button to learn more about the labeled artist", "", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -121,7 +133,16 @@ namespace IntegProgFinals_ArtGallery_ArtView
                 {
                     if (user.User_DisplayName == item[1])
                     {
-                        MessageBox.Show(user.User_Bio, "", MessageBoxButton.OK, MessageBoxImage.Information);
+                        foreach(var st in usttbl)
+                        {
+                            if(user.UserStatus_ID == st.UserStatus_ID)
+                            {
+                                status = st.UserStatus_Desc;
+                            }
+                        }
+                        date = user.User_Date.ToString().Split(' ');
+                        MessageBox.Show("Name: " + user.User_DisplayName + "\nDate of Creation of Account: " + date[0] + "\nDescription: " + user.User_Bio + "\nSex: " + user.User_Sex +
+                            "\nUser Status: " + status, "", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
             }
@@ -220,6 +241,12 @@ namespace IntegProgFinals_ArtGallery_ArtView
                 {
                     foreach (var user in userstbl)
                     {
+                        //if banned user
+                        if (user.UserStatus_ID == "US3")
+                        {
+                            break;
+                        }
+                        //
                         if (art.U_ID == user.U_ID)
                         {
                             ArtListBox.Items.Add(art.Art_Title + "|" + user.User_DisplayName);
@@ -331,6 +358,12 @@ namespace IntegProgFinals_ArtGallery_ArtView
                     {
                         foreach (var user in userstbl)
                         {
+                            //if banned user
+                            if (user.UserStatus_ID == "US2")
+                            {
+                                break;
+                            }
+                            //
                             if (art.U_ID == user.U_ID)
                             {
                                 ArtListBox.Items.Add(art.Art_Title + "|" + user.User_DisplayName);
