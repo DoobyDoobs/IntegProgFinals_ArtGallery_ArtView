@@ -60,7 +60,7 @@
                         <!-- Add your sidebar content here -->
                         <Button x:Name="ArtistProfile" Content="Profile" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" Width="80" Height ="50" Click="ArtistProfile_Click"/>
                         <Button x:Name="ArtistUploads" Content="Uploads" HorizontalAlignment="Left" Margin="40,100,0,0" VerticalAlignment="Top" Width="80" Height ="50" Click="ArtistUploads_Click"/>
-                        <Button x:Name="ArtView" Content="Uploads" HorizontalAlignment="Left" Margin="40,180,0,0" VerticalAlignment="Top" Width="80" Height ="50" Click="ArtView_Click"/>
+                        <Button x:Name="ArtView" Content="View Art" HorizontalAlignment="Left" Margin="40,180,0,0" VerticalAlignment="Top" Width="80" Height ="50" Click="ArtView_Click"/>
 
                         <Button x:Name="ArtistHome" Content="Home" HorizontalAlignment="Left" Margin="40,500,0,0" VerticalAlignment="Top" Width="80" Height ="50" Click="ArtistHome_Click"/>
                         <Button x:Name="ArtistLogout" Content="Logout" HorizontalAlignment="Left" Margin="40,580,0,0" VerticalAlignment="Top" Width="80" Height ="50" Click="ArtistLogout_Click"/>
