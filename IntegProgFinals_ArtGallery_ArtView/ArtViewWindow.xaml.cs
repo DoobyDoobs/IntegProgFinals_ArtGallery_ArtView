@@ -274,6 +274,7 @@ namespace IntegProgFinals_ArtGallery_ArtView
                             }
                             if(!filtercheck)
                             {
+                                filtercheck = true;
                                 founduser = false;
                                 foreach(var user in userstbl)
                                 {
